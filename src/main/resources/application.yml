@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:${DB_PORT:6432}/${DB_NAME:kuber}?preparedStatementCacheQueries=0
+    username: mustangs2
+    password: DI8E64c5clAyWuAz0Tqm4pgeUj12KZ
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: vivek
+    password: vivek
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          trust: "*"
+
+aws:
+  s3:
+    bucket: my-first-balti
+  region: ap-south-1
+
+application:
+  security:
+    jwt:
+      secret-key: uAJUnVO6oe2X0wsk4QCylc7EJqKVnE8uncdkjbdsjbdjgbfhjdfbjhbfdjhbfdhjb
+      expiration: 864000
+
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
