@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles")
+@Table(name = "roles", schema = "file_uploads")
 @EntityListeners(AuditingEntityListener.class)
 public class Role {
     @Id

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tokens")
+@Table(name = "tokens", schema = "file_uploads")
 public class Token {
     @Id
     @GeneratedValue
