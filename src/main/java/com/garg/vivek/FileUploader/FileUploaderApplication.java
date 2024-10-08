@@ -5,6 +5,7 @@ import com.garg.vivek.FileUploader.entities.User;
 import com.garg.vivek.FileUploader.models.requests.FileUploadRequest;
 import com.garg.vivek.FileUploader.repositories.RoleRepository;
 import com.garg.vivek.FileUploader.repositories.UserRepo;
+import com.garg.vivek.FileUploader.services.interfaces.FileMergerService;
 import com.garg.vivek.FileUploader.services.interfaces.FileUploaderService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +14,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
-
+import java.util.List;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -28,7 +29,7 @@ public class FileUploaderApplication {
 	}
 
 	@Bean
-	public CommandLineRunner runner(RoleRepository roleRepository, FileUploaderService fileUploaderService, UserRepo userRepo){
+	public CommandLineRunner runner(RoleRepository roleRepository, FileUploaderService fileUploaderService, UserRepo userRepo, FileMergerService fileMergerService){
 		return args -> {
 			if(roleRepository.findByName("USER").isEmpty()){
 				roleRepository.save(
@@ -36,27 +37,32 @@ public class FileUploaderApplication {
 				);
 			}
 
-			String filePath = "stree.mkv";
-			File file = new File(filePath);
+//			String filePath = "stree.mkv";
+//			File file = new File(filePath);
+//
+//			var user = User.builder().
+//					id(null)
+//					.firstName("vivek")
+//					.dateOfBirth(LocalDateTime.now())
+//					.lastName("garg")
+//					.email("vgarg7900@gmail.com")
+//					.password("vgarg@123")
+//					.build();
+//
+//			userRepo.save(user);
+//
+//			var request = FileUploadRequest.builder()
+//					.file(file).email("vgarg7900@gmail.com")
+//					.alias("vayus1")
+//					.build();
+//
+//			var resp = fileUploaderService.uploadFile(request);
+//			System.out.println(resp);
 
-			var user = User.builder().
-					id(null)
-					.firstName("vivek")
-					.dateOfBirth(LocalDateTime.now())
-					.lastName("garg")
-					.email("vgarg7900@gmail.com")
-					.password("vgarg@123")
-					.build();
-
-			userRepo.save(user);
-
-			var request = FileUploadRequest.builder()
-					.file(file).email("vgarg7900@gmail.com")
-					.alias("vayus1")
-					.build();
-
-			var resp = fileUploaderService.uploadFile(request);
-			System.out.println(resp);
+			var mergeFiles = fileMergerService.mergeFiles(
+					List.of("bdfvjbdjbdhjbdfjbfd")
+			);
+			System.out.println(mergeFiles);
 		};
 	}
 

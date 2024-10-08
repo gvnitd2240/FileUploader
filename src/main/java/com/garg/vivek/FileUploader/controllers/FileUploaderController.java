@@ -6,16 +6,14 @@ import com.garg.vivek.FileUploader.services.interfaces.FileUploaderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/upload")
 @RequiredArgsConstructor
+@Tag(name = "File Merger", description = "Controller to upload files and get URLs")
 public class FileUploaderController {
 
     @Autowired

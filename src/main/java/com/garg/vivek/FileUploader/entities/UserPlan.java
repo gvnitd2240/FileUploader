@@ -13,7 +13,7 @@ public class UserPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", unique = true) // Ensure unique constraint
-    private User user;
+//    @OneToOne
+//    @JoinColumn(name = "user_id", unique = true)
+//    private User user;
 }
