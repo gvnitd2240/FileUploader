@@ -8,11 +8,11 @@ import software.amazon.awssdk.services.s3.S3Client;
 
 @Configuration
 public class S3Config {
-    @Bean
-    public S3Client s3Client() {
-        return S3Client.builder()
-                .region(Region.of("ap-south-1"))
-                .credentialsProvider(ProfileCredentialsProvider.create())
-                .build();
-    }
+  @Bean
+  public S3Client s3Client() {
+    return S3Client.builder()
+      .region(Region.of("ap-south-1"))
+      .credentialsProvider(ProfileCredentialsProvider.create())
+      .build();
+  }
 }

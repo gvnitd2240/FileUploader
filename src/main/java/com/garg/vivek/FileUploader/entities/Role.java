@@ -16,15 +16,15 @@ import java.util.List;
 @Table(name = "roles", schema = "file_uploads")
 @EntityListeners(AuditingEntityListener.class)
 public class Role {
-    @Id
-    @GeneratedValue
-    private Integer id;
+  @Id
+  @GeneratedValue
+  private Integer id;
 
-    @Column(unique = true)
-    private String name;
+  @Column(unique = true)
+  private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    @JsonIgnore
-    private List<User> users;
+  @ManyToMany(mappedBy = "roles")
+  @JsonIgnore
+  private List<User> users;
 }
 

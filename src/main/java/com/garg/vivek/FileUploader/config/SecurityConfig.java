@@ -19,31 +19,31 @@ import org.springframework.web.cors.CorsConfigurationSource;
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
-    private final JwtFilter jwtFilter;
-    private final AuthenticationManager authenticationManager;
-    private final CorsConfigurationSource corsConfigurationSource;
+  private final JwtFilter jwtFilter;
+  private final AuthenticationManager authenticationManager;
+  private final CorsConfigurationSource corsConfigurationSource;
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource))
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auths -> auths
-                        .requestMatchers(
-                                "/auth/**",
-                                "/v2/api-docs",
-                                "/v3/api-docs",
-                                "/v4/api-docs",
-                                "/swagger-ui/**"
-                        ).permitAll()
-                        .anyRequest().authenticated()
-                )
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
-                .authenticationManager(authenticationManager)
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+  @Bean
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+      .cors(cors -> cors.configurationSource(corsConfigurationSource))
+      .csrf(AbstractHttpConfigurer::disable)
+      .authorizeHttpRequests(auths -> auths
+        .requestMatchers(
+          "/auth/**",
+          "/v2/api-docs",
+          "/v3/api-docs",
+          "/v4/api-docs",
+          "/swagger-ui/**"
+        ).permitAll()
+        .anyRequest().authenticated()
+      )
+      .sessionManagement(session -> session
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+      )
+      .authenticationManager(authenticationManager)
+      .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
-    }
+    return http.build();
+  }
 }

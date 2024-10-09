@@ -12,9 +12,9 @@ import lombok.Setter;
 @Setter
 @Builder
 public class AuthenticationRequest {
-    @NotNull(message = "email can not be null")
-    @NotEmpty(message = "email can not be empty.")
-    private String email;
-    @Size(min = 8, message = "size is small than 8")
-    private String password;
+  @NotNull(message = "email can not be null")
+  @NotEmpty(message = "email can not be empty.")
+  private String email;
+  @Size(min = 8, message = "size is small than 8")
+  private String password;
 }
