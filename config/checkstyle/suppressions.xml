@@ -5,6 +5,9 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
+    <!-- Suppress checks for files in src/test/java -->
+    <suppress checks=".*" files=".*src[/\\]test[/\\]java[/\\].*"/>
+
     <suppress checks="AvoidStarImport" files="src[/\\]test[/\\]java[/\\].*"/>
     <suppress checks="JavadocStyleCheck"
               files="GeneratedObject.java"
