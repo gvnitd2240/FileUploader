@@ -12,10 +12,6 @@
     <module name="SuppressionFilter">
         <property name="file" value="config/checkstyle/suppressions.xml"/>
     </module>
-    <module name="FileSetCheck">
-        <!-- Exclude the src/test/java folder -->
-        <property name="excludes" value="**/src/test/java/**"/>
-    </module>
     <!--Add more checks from google style guide:-->
     <!--https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml-->
     <module name="TreeWalker">
