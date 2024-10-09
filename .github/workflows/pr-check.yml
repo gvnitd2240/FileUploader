@@ -17,8 +17,8 @@ jobs:
           java-version: 17
           distribution: 'temurin'
 
-      - name: Set MAVEN_OPTS environment variable
-        run: echo "MAVEN_OPTS=--add-opens jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-opens jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" >> $GITHUB_ENV
+#      - name: Set MAVEN_OPTS environment variable
+#        run: echo "MAVEN_OPTS=--add-opens jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-opens jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" >> $GITHUB_ENV
 
 #      - name: Install Maven
 #        run: |
