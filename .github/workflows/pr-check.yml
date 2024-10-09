@@ -20,10 +20,10 @@ jobs:
       - name: Set MAVEN_OPTS environment variable
         run: echo "MAVEN_OPTS=--add-opens jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-opens jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED" >> $GITHUB_ENV
 
-      - name: Install Maven
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y maven
+#      - name: Install Maven
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y maven
 
       - name: Build with Maven
         run: mvn spotless:check checkstyle:check
