@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface FileMergerService {
 
-    String mergeFiles(List<String> urls);
+  String mergeFiles(List<String> urls);
 }

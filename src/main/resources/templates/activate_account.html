@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Account Activation</title>
     <style>
         body {
@@ -45,14 +45,15 @@
         a:hover {
             background-color: #0056b3;
         }
+
     </style>
 </head>
 <body>
 <div class="container">
     <h1> Account Activation</h1>
-    <p class = "greeting" th:text="'Hello ' + ${user_name} + ','"></p>
+    <p class="greeting" th:text="'Hello ' + ${user_name} + ','"></p>
     <div><span th:text="${activation_code}"></span></div>
-    <a th:href = "${activation_url}" target = "_blank"> activate your account.</a>
+    <a target="_blank" th:href="${activation_url}"> activate your account.</a>
 </div>
 </body>
 </html>

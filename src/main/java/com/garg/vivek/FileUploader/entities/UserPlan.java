@@ -1,6 +1,10 @@
 package com.garg.vivek.FileUploader.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,9 +13,9 @@ import lombok.Data;
 @Builder
 @Data
 public class UserPlan {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
 //    @OneToOne
 //    @JoinColumn(name = "user_id", unique = true)

@@ -8,8 +8,8 @@ import java.util.List;
 @Service
 public class FileMergerServiceImpl implements FileMergerService {
 
-    @Override
-    public String mergeFiles(List<String> urls) throws IllegalArgumentException {
-        return String.join(",", urls);
-    }
+  @Override
+  public String mergeFiles(List<String> urls) throws IllegalArgumentException {
+    return String.join(",", urls);
+  }
 }
