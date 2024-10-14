@@ -20,46 +20,46 @@ import static org.springframework.mail.javamail.MimeMessageHelper.MULTIPART_MODE
 @Service
 @RequiredArgsConstructor
 public class EmailService {
-    private final JavaMailSender javaMailSender;
-    private final SpringTemplateEngine templateEngine;
+  private final JavaMailSender javaMailSender;
+  private final SpringTemplateEngine templateEngine;
 
-    @Async
-    public void sendEmail(
-            String to,
-            String userName,
-            EmailTemplateName emailTemplate,
-            String confirmationUrl,
-            String activationCode,
-            String subject
-    ) throws MessagingException {
-        String templateName = emailTemplate == null ? "confirm-email" : emailTemplate.getName();
+  @Async
+  public void sendEmail(
+    String to,
+    String userName,
+    EmailTemplateName emailTemplate,
+    String confirmationUrl,
+    String activationCode,
+    String subject
+  ) throws MessagingException {
+    String templateName = emailTemplate == null ? "confirm-email" : emailTemplate.getName();
 
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+    MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 
-        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(
-                mimeMessage,
-                MULTIPART_MODE_MIXED,
-                StandardCharsets.UTF_8.name()
-        );
+    MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(
+      mimeMessage,
+      MULTIPART_MODE_MIXED,
+      StandardCharsets.UTF_8.name()
+    );
 
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("user_name", userName);
-        properties.put("confirmation_url", confirmationUrl);
-        properties.put("activation_code", activationCode);
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("user_name", userName);
+    properties.put("confirmation_url", confirmationUrl);
+    properties.put("activation_code", activationCode);
 
-        //passing variables to email template
-        Context context = new Context();
-        context.setVariables(properties);
+    //passing variables to email template
+    Context context = new Context();
+    context.setVariables(properties);
 
-        mimeMessageHelper.setFrom("vgarg7900@gmail.com");
-        mimeMessageHelper.setTo(to);
-        mimeMessageHelper.setSubject(subject);
+    mimeMessageHelper.setFrom("vgarg7900@gmail.com");
+    mimeMessageHelper.setTo(to);
+    mimeMessageHelper.setSubject(subject);
 
-        String template = templateEngine.process(templateName, context);
+    String template = templateEngine.process(templateName, context);
 
-        mimeMessageHelper.setText(template, true);
+    mimeMessageHelper.setText(template, true);
 
-        javaMailSender.send(mimeMessage);
+    javaMailSender.send(mimeMessage);
 
-    }
+  }
 }

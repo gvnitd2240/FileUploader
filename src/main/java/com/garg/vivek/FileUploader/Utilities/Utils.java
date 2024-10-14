@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class Utils {
-    public static String getEmailFromAuth() throws IllegalArgumentException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            return userDetails.getUsername();
-        }
-
-        throw new IllegalArgumentException("User is Invalid");
+  public static String getEmailFromAuth() throws IllegalArgumentException {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+      UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+      return userDetails.getUsername();
     }
+
+    throw new IllegalArgumentException("User is Invalid");
+  }
 }
