@@ -37,6 +37,9 @@ public class User implements UserDetails, Principal {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Uploads> uploads;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private UserPlan userPlan;
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -47,6 +50,8 @@ public class User implements UserDetails, Principal {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+
+    private Long availableLimit;
 
     @Override
     public String getName() {
@@ -90,5 +95,13 @@ public class User implements UserDetails, Principal {
 
     public String getFullName(){
         return firstName + " " + lastName;
+    }
+
+    public Long getAvailableLimit() {
+        return availableLimit;
+    }
+
+    public void setAvailableLimit(Long availableLimit) {
+        this.availableLimit = availableLimit;
     }
 }

@@ -1,3 +1,7 @@
+server:
+  port: 8093
+  servlet:
+    context-path: /file-uploader
 spring:
   datasource:
     url: jdbc:postgresql://${DB_HOST:127.0.0.1}:${DB_PORT:6432}/${DB_NAME:kuber}?preparedStatementCacheQueries=0

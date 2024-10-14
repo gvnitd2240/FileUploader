@@ -3,7 +3,7 @@ package com.garg.vivek.FileUploader.entities;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
-
+import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,4 +22,12 @@ public class Uploads {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @CreatedDate
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
 }
